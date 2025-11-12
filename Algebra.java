@@ -22,16 +22,53 @@ public class Algebra {
 		//System.out.println(sqrt(263169));
    		//System.out.println(sqrt(76123));
 	}  
+	public static int abs(int x) {
+        if (x >= 0) {
+            return x;
+        } else {
+            return negate(x);
+        }
+    }
 
+    
+    public static int negate(int x) {
+        int negX = 0;
+        int x_abs = abs(x);
+        
+        if (x >= 0) {
+           
+            for (int i = 0; i < x_abs; i++) {
+                negX--;
+            }
+        } else {
+            
+            for (int i = 0; i < x_abs; i++) {
+                negX++;
+            }
+        }
+        return negX;
+    }
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		for (int i= 0; i< x2; i++)
+		if (x2 >0)
 		{
-			x1++;
+			for (int i= 0; i< x2; i++)
+			{
+				x1++;
+			}
+		}
+		else 
+		{
+			for	(int i=0; i>x2; i--)
+			{
+				x1--;
+			}
+			
 		}
 		
-		return x1;
-	}
+			return x1;
+		}
+		
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
