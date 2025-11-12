@@ -13,7 +13,7 @@ public class Algebra {
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
-   		System.out.println(div(12,3));   // 12 / 3    
+   		System.out.println(div(-12,-3));   // 12 / 3    
    		System.out.println(div(5,5));    // 5 / 5  
    		System.out.println(div(25,7));   // 25 / 7
    		System.out.println(mod(100,7));   // 25 % 7
@@ -145,20 +145,33 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		int counter = 0;
-		int delta = x1;
-		while (delta >= x2)
+		
+    	boolean negative = false;
+    	if (x1 < 0) 
 		{
-			if (minus(delta, x2) >= 0)
-			{
+        	x1 = minus(0, x1);
+        	negative = !negative;
+    	}
+    	if (x2 < 0) 
+		{
+        	x2 = minus(0, x2);
+        	negative = !negative;
+    	}
 
-				delta = minus(delta, x2);
-				counter++;
-			}
-			
-		}
-		return counter;
-	}
+    	int counter = 0;
+    	int delta = x1;
+
+    while (delta >= x2) 
+	{
+        delta = minus(delta, x2);
+        counter++;
+    }
+    if (negative) {
+        counter = minus(0, counter);
+    }
+    return counter;
+}
+	
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
