@@ -70,7 +70,7 @@ public class LoanCalc {
         double mid = (high + low) / 2;
 		double balance = endBalance(loan, rate, n, mid);
 		iterationCounter =0;
-		while (Math.abs(balance) > epsilon) 
+		while (Math.abs(balance) >= epsilon) 
 		{
 			if (balance > 0)
 			{
