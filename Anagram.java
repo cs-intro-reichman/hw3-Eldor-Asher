@@ -28,7 +28,31 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
+		String word1 = preProcess(str1);
+		String word2 = preProcess(str2);
+		if (word1.length() != word2.length()) 
+		{
+			return false;
+		}
+		for (int i=0; i<word1.length(); i++)
+		{
+			char c = word1.charAt(i);
+			int index = word2.indexOf(c);
+			if (index == -1)
+			{
+				return false;
+			}
+			else
+			{
+				word2 = word2.substring(0, index) + word2.substring(index+1);
+
+			}
+		}
+		if (word2.length() == 0)
+		{
+			return true;
+		}
+
 		return false;
 	}
 	   
@@ -36,8 +60,15 @@ public class Anagram {
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		String word = "";
+		for (int i=0; i<str.length(); i++)
+		{
+			if (Character.isLetter(str.charAt(i)))
+			{
+				word+= Character.toLowerCase(str.charAt(i));
+			}
+		}
+		return word;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
